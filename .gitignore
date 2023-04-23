@@ -2,6 +2,9 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+.idea/
+docker/db
+composer.phar
 
 # Laravel 4 specific
 bootstrap/compiled.php
@@ -17,7 +20,16 @@ public_html/hot
 
 storage/*.key
 .env
+.env.backup
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+Homestead.json
+Homestead.yaml
+*.log
+*.sqlite
+.htaccess
+/storage
+/config
