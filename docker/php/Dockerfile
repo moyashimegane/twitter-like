@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     vim \
     && docker-php-ext-install zip pdo_mysql opcache
 
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+
 # コンテナ内で作業する際のカレントディレクトリの指定
 WORKDIR /var/www
 
