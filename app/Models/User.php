@@ -30,4 +30,13 @@ class User extends Authenticatable
     public function follows() {
         return $this->belongsToMany(self::class, 'followers', 'following_id', 'followed_id');
     }
+
+    /**
+     * ログインユーザー以外のユーザーを1ページにつき5人ずつ取得
+     * @param Int $user_id
+     * @return mixed
+     */
+    public function getAllUsers(int $user_id) {
+        return $this->Where('id', '<>', $user_id)->paginate(5);
+    }
 }

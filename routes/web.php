@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ログイン状態でのみアクセス可能にする
+Route::group(['middleware' => 'auth'], function() {
+
+    // ユーザ関連
+    // 一覧、詳細、編集、更新のみ許可
+    Route::resource('users', UsersController::class)->only(['index', 'show', 'edit', 'update']);
+
+});
