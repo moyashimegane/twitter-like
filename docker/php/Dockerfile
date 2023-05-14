@@ -1,8 +1,8 @@
 # ベースイメージの設定
 FROM php:8.1-fpm
 
-RUN #pecl install xdebug \
-#    && docker-php-ext-enable xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
 
 # 作成した設定ファイルをコンテナ内にコピー
 COPY php.ini /usr/local/etc/php/
