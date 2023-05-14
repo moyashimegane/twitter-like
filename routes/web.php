@@ -25,9 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ログイン状態でのみアクセス可能にする
 Route::group(['middleware' => 'auth'], function() {
-
     // ユーザ関連
     // 一覧、詳細、編集、更新のみ許可
     Route::resource('users', UsersController::class)->only(['index', 'show', 'edit', 'update']);
+
+    // フォロー/フォロー解除を追加
+    Route::post('users/{user}/follow', [UsersController::class, 'follow'])->name('follow');
+    Route::delete('users/{user}/unfollow', [UsersController::class, 'unfollow'])->name('unfollow');
 
 });
